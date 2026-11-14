@@ -43,7 +43,9 @@
       "applicationCategory": "BrowserApplication",
       "operatingSystem": "Android TV, Google TV (Android 7.0 or newer)",
       "url": "https://mktvhub.github.io/",
-      "downloadUrl": "https://github.com/MKTVHub/mkTV/releases",
+      "downloadUrl": "https://github.com/MKTVHub/mkTV/releases/download/v1.0.0/mkTV-1.0.0.apk",
+      "softwareVersion": "1.0.0",
+      "fileSize": "4.7 MB",
       "codeRepository": "https://github.com/MKTVHub/mkTV",
       "license": "https://www.apache.org/licenses/LICENSE-2.0",
       "isAccessibleForFree": true,
@@ -65,7 +67,7 @@
         { "@type": "Question", "name": "Does mkTV work on Fire TV, LG or Samsung TVs?",
           "acceptedAnswer": { "@type": "Answer", "text": "mkTV runs on Android TV and Google TV. Fire TV runs Android and may work by sideloading, but it is untested. LG webOS and Samsung Tizen ports are planned and open to contributors." } },
         { "@type": "Question", "name": "How do I install mkTV on my TV?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Download the APK from the GitHub Releases page once published, or build it from source with Gradle, then install it with adb or a sideloading app. mkTV needs Android 7.0 or newer." } }
+          "acceptedAnswer": { "@type": "Answer", "text": "Download mkTV-1.0.0.apk from the MKTVHub GitHub Releases page and install it with adb or a sideloading app such as Downloader or Send Files to TV. You can also build it from source with Gradle. mkTV needs Android 7.0 or newer." } }
       ]
     }
   ]
@@ -175,7 +177,7 @@
       <p class="lead">A free, open-source browser for Android TV and Google TV. It blocks ads, lets you reach any button on any website with the D-pad, plays videos full screen, and turns your phone into a remote and keyboard.</p>
       <div class="btns">
         <a class="btn solid" href="https://github.com/MKTVHub/mkTV">View on GitHub</a>
-        <a class="btn ghost" href="#start">Install on your TV</a>
+        <a class="btn ghost" href="https://github.com/MKTVHub/mkTV/releases/download/v1.0.0/mkTV-1.0.0.apk">⬇ Download APK (v1.0.0)</a>
       </div>
     </div>
     <img class="mark" src="assets/mark.png" alt="mkTV logo: white play button with mk inside" width="340" height="340">
@@ -247,14 +249,20 @@
     <details><summary>Can I use my phone as a remote and keyboard for my TV browser?</summary><p>Yes. In mkTV open the menu and choose Phone remote, then scan the QR code with your phone. Your phone browser becomes a D-pad, media remote and keyboard. Both devices must be on the same Wi-Fi and no app install is needed.</p></details>
     <details><summary>Is mkTV free?</summary><p>Yes. mkTV is free and open source under the Apache 2.0 license, with no accounts, no analytics and no ads of its own.</p></details>
     <details><summary>Does mkTV work on Fire TV, LG or Samsung TVs?</summary><p>mkTV runs on Android TV and Google TV. Fire TV runs Android and may work by sideloading, but it is untested. LG webOS and Samsung Tizen ports are planned and open to contributors.</p></details>
-    <details><summary>How do I install mkTV on my TV?</summary><p>Download the APK from the GitHub Releases page once published, or build it from source with Gradle, then install it with adb or a sideloading app. mkTV needs Android 7.0 or newer.</p></details>
+    <details><summary>How do I install mkTV on my TV?</summary><p>Download mkTV-1.0.0.apk from the MKTVHub GitHub Releases page and install it with adb or a sideloading app such as Downloader or Send Files to TV. You can also build it from source with Gradle. mkTV needs Android 7.0 or newer.</p></details>
   </div>
 </section>
 
 <section id="start">
   <div class="wrap">
     <h2>Install mkTV on your Android TV</h2>
-    <p class="sub">Ready-made APKs will be on the <a href="https://github.com/MKTVHub/mkTV/releases">Releases page</a>. Until then, build it yourself (JDK 17, Android SDK 35):</p>
+    <p class="sub">Free download. No account, no Play Store needed.</p>
+    <ol class="steps">
+      <li><b>Download the APK</b><a href="https://github.com/MKTVHub/mkTV/releases/download/v1.0.0/mkTV-1.0.0.apk">mkTV-1.0.0.apk</a> (4.7 MB, Android 7.0+). All versions are on the <a href="https://github.com/MKTVHub/mkTV/releases">Releases page</a>.</li>
+      <li><b>Get it onto the TV</b>Use a sideloading app such as Downloader or Send Files to TV, or from a computer: <code>adb install mkTV-1.0.0.apk</code></li>
+      <li><b>Open mkTV</b>It appears in your TV's app row. Press ⋮ → Phone remote to pair your phone.</li>
+    </ol>
+    <p class="sub" style="margin-top:28px">Or build it yourself (JDK 17, Android SDK 35):</p>
 <pre>git clone https://github.com/MKTVHub/mkTV.git && cd mkTV
 ./gradlew assembleDebug
 adb connect &lt;tv-ip&gt;:5555
