@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MKTVHub · mkTV, a web browser built for the TV remote</title>
+<meta name="description" content="MKTVHub makes every TV smart. mkTV is an open-source web browser for Android TV and Google TV with ad blocking, easy remote navigation and a phone remote.">
+<meta name="theme-color" content="#15121d">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:title" content="mkTV by MKTVHub">
+<meta property="og:description" content="A web browser built for the TV remote. Ad blocking, easy D-pad navigation, YouTube TV mode, private browsing and a phone remote.">
+<meta property="og:image" content="https://mktvhub.github.io/assets/og.png">
+<meta property="og:url" content="https://mktvhub.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root { --bg:#15121d; --card:#1f1a2b; --line:#ffffff14; --text:#f4f2f8; --muted:#a8a1b8;
+          --c1:#7c3aed; --c2:#db2777; --c3:#f97316; --grad:linear-gradient(135deg,var(--c1),var(--c2) 55%,var(--c3)); }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:var(--bg); color:var(--text); font:17px/1.6 -apple-system,system-ui,"Segoe UI",Roboto,sans-serif; }
+  a { color:inherit; }
+  .wrap { max-width:1100px; margin:0 auto; padding:0 24px; }
+
+  nav { position:sticky; top:0; z-index:10; backdrop-filter:blur(12px); background:#15121dcc; border-bottom:1px solid var(--line); }
+  nav .wrap { display:flex; align-items:center; gap:28px; height:64px; }
+  .brand { display:flex; align-items:center; gap:10px; font-weight:800; font-size:19px; text-decoration:none; }
+  .brand i { width:34px; height:34px; border-radius:9px; background:var(--grad); display:grid; place-items:center; }
+  .brand i img { width:24px; }
+  nav .links { margin-left:auto; display:flex; gap:24px; font-size:15px; }
+  nav .links a { text-decoration:none; color:var(--muted); }
+  nav .links a:hover { color:var(--text); }
+
+  .hero { background:var(--grad); position:relative; overflow:hidden; }
+  .hero::after { content:""; position:absolute; inset:auto 0 0 0; height:120px; background:linear-gradient(transparent,var(--bg)); }
+  .hero .wrap { display:grid; grid-template-columns:1.2fr .8fr; gap:40px; align-items:center; padding-top:90px; padding-bottom:140px; position:relative; z-index:1; }
+  .hero h1 { font-size:clamp(42px,6vw,72px); line-height:1.05; margin:0 0 18px; letter-spacing:-.02em; }
+  .hero p.lead { font-size:21px; margin:0 0 30px; max-width:560px; color:#fff; opacity:.95; }
+  .hero .mark { width:100%; max-width:340px; justify-self:center; filter:drop-shadow(0 20px 40px #0004); }
+  .btns { display:flex; gap:14px; flex-wrap:wrap; }
+  .btn { display:inline-flex; align-items:center; gap:8px; padding:14px 22px; border-radius:14px; font-weight:700; text-decoration:none; font-size:16px; }
+  .btn.solid { background:#fff; color:#2a1440; }
+  .btn.ghost { background:#ffffff22; color:#fff; border:1px solid #ffffff55; }
+  .btn:hover { transform:translateY(-1px); }
+
+  section { padding:70px 0; }
+  h2 { font-size:34px; margin:0 0 10px; letter-spacing:-.01em; }
+  .sub { color:var(--muted); margin:0 0 36px; max-width:680px; }
+  .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:18px; padding:24px; }
+  .card .ic { width:44px; height:44px; border-radius:12px; background:var(--grad); display:grid; place-items:center; font-size:22px; margin-bottom:14px; }
+  .card h3 { margin:0 0 6px; font-size:19px; }
+  .card p { margin:0; color:var(--muted); font-size:15.5px; }
+
+  .remote { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; }
+  .steps { counter-reset:s; list-style:none; padding:0; margin:0; }
+  .steps li { counter-increment:s; position:relative; padding:0 0 18px 52px; color:var(--muted); }
+  .steps li b { color:var(--text); display:block; }
+  .steps li::before { content:counter(s); position:absolute; left:0; top:0; width:36px; height:36px; border-radius:50%; background:var(--grad); color:#fff; font-weight:800; display:grid; place-items:center; }
+  .phone { justify-self:center; width:250px; border-radius:36px; background:#0d0b12; border:2px solid #ffffff22; padding:22px 18px; box-shadow:0 30px 60px #0007; }
+  .phone .pad { width:180px; height:180px; margin:10px auto 18px; border-radius:50%; background:radial-gradient(circle at 50% 40%,#3a3152,#2d2640); position:relative; }
+  .phone .pad span { position:absolute; color:#fff; font-size:18px; }
+  .phone .ok { left:50%; top:50%; transform:translate(-50%,-50%); width:66px; height:66px; border-radius:50%; background:linear-gradient(135deg,var(--c1),var(--c2)); display:grid; place-items:center; font-weight:800; font-size:15px !important; }
+  .phone .row { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:8px; }
+  .phone .row div { height:38px; border-radius:11px; background:#2d2640; display:grid; place-items:center; font-size:13px; color:#ddd; }
+
+  .tvs { display:flex; flex-wrap:wrap; gap:12px; }
+  .tv { padding:12px 18px; border-radius:999px; border:1px solid var(--line); background:var(--card); font-weight:600; font-size:15px; }
+  .tv em { font-style:normal; font-size:12px; margin-left:8px; padding:2px 8px; border-radius:999px; }
+  .tv .now { background:#10b98133; color:#6ee7b7; }
+  .tv .next { background:#f9731633; color:#fdba74; }
+
+  pre { background:#0d0b12; border:1px solid var(--line); border-radius:14px; padding:18px 20px; overflow:auto; font-size:14.5px; color:#e9e5f2; }
+  footer { border-top:1px solid var(--line); padding:30px 0 40px; color:var(--muted); font-size:14px; }
+  footer .wrap { display:flex; gap:20px; flex-wrap:wrap; align-items:center; }
+  footer .wrap span:last-child { margin-left:auto; }
+
+  @media (max-width:860px) {
+    .hero .wrap, .remote { grid-template-columns:1fr; }
+    .hero .mark { max-width:200px; grid-row:1; }
+    .grid { grid-template-columns:1fr; }
+    nav .links a:not(.gh) { display:none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#"><i><img src="assets/mark.png" alt=""></i>MKTVHub</a>
+    <div class="links">
+      <a href="#features">Features</a>
+      <a href="#remote">Phone remote</a>
+      <a href="#every-tv">Every TV</a>
+      <a href="#start">Get started</a>
+      <a class="gh" href="https://github.com/MKTVHub">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <h1>mkTV.<br>The web, made for your remote.</h1>
+      <p class="lead">An open-source browser for Android TV and Google TV. It blocks ads, lets you reach any button on a page with the D-pad, and turns your phone into a remote and keyboard.</p>
+      <div class="btns">
+        <a class="btn solid" href="https://github.com/MKTVHub/mkTV">View on GitHub</a>
+        <a class="btn ghost" href="#start">Install on your TV</a>
+      </div>
+    </div>
+    <img class="mark" src="assets/mark.png" alt="mkTV logo">
+  </div>
+</header>
+
+<section id="features">
+  <div class="wrap">
+    <h2>Everything a TV browser should have been</h2>
+    <p class="sub">Websites are made for mice and touchscreens. mkTV makes them work from the sofa.</p>
+    <div class="grid">
+      <div class="card"><div class="ic">🛡️</div><h3>Ads and trackers blocked</h3><p>Over 77,000 ad and tracker domains blocked, pop-ups and click-traps removed, tracking parameters stripped from links.</p></div>
+      <div class="card"><div class="ic">🎯</div><h3>Jump navigation</h3><p>Arrow keys jump straight to the next button, link or video. Hold ▲ or ▼ to reach a site's top or bottom bar. Prefer a mouse pointer? Switch any time.</p></div>
+      <div class="card"><div class="ic">▶️</div><h3>Watch mode</h3><p>When a video plays, a simple dock appears: play, seek, next, and true full screen. Streams can also open in a built-in native player.</p></div>
+      <div class="card"><div class="ic">📺</div><h3>YouTube, the TV way</h3><p>YouTube opens in its TV layout, so the remote feels natural. Sound turns on by itself, and video ads are skipped where possible.</p></div>
+      <div class="card"><div class="ic">🕶️</div><h3>Private browsing</h3><p>A separate private profile with nothing saved. History, cookies and cache are wiped when you leave it.</p></div>
+      <div class="card"><div class="ic">⭐</div><h3>A home screen of tiles</h3><p>Popular sites, your favourites and recent pages as big, easy tiles. The top bar hides itself so pages get the full screen.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="remote">
+  <div class="wrap remote">
+    <div>
+      <h2>Your phone is the remote</h2>
+      <p class="sub">Typing with a D-pad is painful. With mkTV you scan a code and type on your phone instead. No app to install.</p>
+      <ol class="steps">
+        <li><b>Open ⋮ → Phone remote on the TV</b>A QR code appears.</li>
+        <li><b>Scan it with your phone's camera</b>Your phone needs to be on the same Wi-Fi as the TV.</li>
+        <li><b>Control everything</b>D-pad, OK, Back, play/pause and seek, type into search boxes, or send a website to the TV.</li>
+      </ol>
+    </div>
+    <div class="phone" aria-hidden="true">
+      <div style="font-weight:800;font-size:15px">mkTV Remote</div>
+      <div class="pad">
+        <span style="left:50%;top:10px;transform:translateX(-50%)">▲</span>
+        <span style="left:50%;bottom:10px;transform:translateX(-50%)">▼</span>
+        <span style="left:14px;top:50%;transform:translateY(-50%)">◀</span>
+        <span style="right:14px;top:50%;transform:translateY(-50%)">▶</span>
+        <span class="ok">OK</span>
+      </div>
+      <div class="row"><div>↩ Back</div><div>⌂ Home</div><div>⋮ Menu</div></div>
+      <div class="row"><div>⏪</div><div>⏯</div><div>⏩</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="every-tv">
+  <div class="wrap">
+    <h2>Making every TV smart</h2>
+    <p class="sub">MKTVHub's goal is bigger than one platform. mkTV keeps its core ideas (blocking rules, page scripts, the phone-remote protocol) separate from Android so they can be ported. Developers are welcome to help.</p>
+    <div class="tvs">
+      <span class="tv">Android TV <em class="now">available</em></span>
+      <span class="tv">Google TV <em class="now">available</em></span>
+      <span class="tv">Fire TV <em class="next">untested</em></span>
+      <span class="tv">LG webOS <em class="next">help wanted</em></span>
+      <span class="tv">Samsung Tizen <em class="next">help wanted</em></span>
+      <span class="tv">Other TVs <em class="next">ideas welcome</em></span>
+    </div>
+  </div>
+</section>
+
+<section id="start">
+  <div class="wrap">
+    <h2>Get started</h2>
+    <p class="sub">Ready-made APKs will be on the <a href="https://github.com/MKTVHub/mkTV/releases">Releases page</a>. Until then, build it yourself (JDK 17, Android SDK 35):</p>
+<pre>git clone https://github.com/MKTVHub/mkTV.git && cd mkTV
+./gradlew assembleDebug
+adb connect &lt;tv-ip&gt;:5555
+adb install -r app/build/outputs/apk/debug/app-debug.apk</pre>
+    <p class="sub" style="margin-top:24px">Want to contribute? Start with <a href="https://github.com/MKTVHub/mkTV/blob/main/AGENTS.md">AGENTS.md</a>, <a href="https://github.com/MKTVHub/mkTV/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> and the <a href="https://github.com/MKTVHub/mkTV/blob/main/docs/ROADMAP.md">roadmap</a>.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 MKTVHub</span>
+    <a href="https://github.com/MKTVHub/mkTV/blob/main/LICENSE">Apache-2.0</a>
+    <a href="https://github.com/MKTVHub/mkTV/blob/main/docs/PRIVACY.md">Privacy</a>
+    <span>mkTV is not affiliated with Google, YouTube or any TV maker.</span>
+  </div>
+</footer>
+
+</body>
+</html>
