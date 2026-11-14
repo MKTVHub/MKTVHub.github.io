@@ -3,16 +3,74 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MKTVHub · mkTV, a web browser built for the TV remote</title>
-<meta name="description" content="MKTVHub makes every TV smart. mkTV is an open-source web browser for Android TV and Google TV with ad blocking, easy remote navigation and a phone remote.">
+<title>mkTV: Ad-Blocking Browser for Android TV &amp; Google TV | MKTVHub</title>
+<meta name="description" content="Free, open-source web browser for Android TV and Google TV. Block ads, browse any site with your remote, watch full screen and type from your phone.">
+<link rel="canonical" href="https://mktvhub.github.io/">
+<meta name="robots" content="index, follow">
+<meta name="author" content="MKTVHub">
 <meta name="theme-color" content="#15121d">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<meta property="og:title" content="mkTV by MKTVHub">
-<meta property="og:description" content="A web browser built for the TV remote. Ad blocking, easy D-pad navigation, YouTube TV mode, private browsing and a phone remote.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MKTVHub">
+<meta property="og:title" content="mkTV: the web browser made for your TV remote">
+<meta property="og:description" content="Free, open-source browser for Android TV and Google TV. Ad blocking, easy D-pad navigation, YouTube in TV mode, private browsing and a phone remote.">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
+<meta property="og:image:alt" content="mkTV logo: a play button with mk inside, next to the words A web browser built for the TV remote">
 <meta property="og:image" content="https://mktvhub.github.io/assets/og.png">
 <meta property="og:url" content="https://mktvhub.github.io/">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="mkTV: the web browser made for your TV remote">
+<meta name="twitter:description" content="Free, open-source browser for Android TV and Google TV with ad blocking and a phone remote.">
+<meta name="twitter:image" content="https://mktvhub.github.io/assets/og.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://mktvhub.github.io/#org",
+      "name": "MKTVHub",
+      "url": "https://mktvhub.github.io/",
+      "logo": "https://mktvhub.github.io/assets/apple-touch-icon.png",
+      "sameAs": ["https://github.com/MKTVHub"]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "mkTV",
+      "description": "Open-source web browser for Android TV and Google TV with ad and tracker blocking, D-pad jump navigation, full-screen watch mode, YouTube TV mode, private browsing and a QR-code phone remote.",
+      "applicationCategory": "BrowserApplication",
+      "operatingSystem": "Android TV, Google TV (Android 7.0 or newer)",
+      "url": "https://mktvhub.github.io/",
+      "downloadUrl": "https://github.com/MKTVHub/mkTV/releases",
+      "codeRepository": "https://github.com/MKTVHub/mkTV",
+      "license": "https://www.apache.org/licenses/LICENSE-2.0",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "image": "https://mktvhub.github.io/assets/og.png",
+      "publisher": { "@id": "https://mktvhub.github.io/#org" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What is the best way to browse the web on Android TV?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Use a browser designed for the remote. mkTV lets the arrow keys jump between buttons, links and videos, so you never have to steer a slow mouse pointer, and you can type with your phone instead of the on-screen keyboard." } },
+        { "@type": "Question", "name": "Does mkTV block ads?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. mkTV blocks requests to more than 77,000 known ad and tracker domains, removes pop-ups and click-trap overlays, and strips tracking parameters from links. On YouTube it removes ad slots from the page data and skips video ads where it can, but no ad blocker catches every ad." } },
+        { "@type": "Question", "name": "Can I use my phone as a remote and keyboard for my TV browser?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. In mkTV open the menu and choose Phone remote, then scan the QR code with your phone. Your phone browser becomes a D-pad, media remote and keyboard. Both devices must be on the same Wi-Fi and no app install is needed." } },
+        { "@type": "Question", "name": "Is mkTV free?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. mkTV is free and open source under the Apache 2.0 license, with no accounts, no analytics and no ads of its own." } },
+        { "@type": "Question", "name": "Does mkTV work on Fire TV, LG or Samsung TVs?",
+          "acceptedAnswer": { "@type": "Answer", "text": "mkTV runs on Android TV and Google TV. Fire TV runs Android and may work by sideloading, but it is untested. LG webOS and Samsung Tizen ports are planned and open to contributors." } },
+        { "@type": "Question", "name": "How do I install mkTV on my TV?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Download the APK from the GitHub Releases page once published, or build it from source with Gradle, then install it with adb or a sideloading app. mkTV needs Android 7.0 or newer." } }
+      ]
+    }
+  ]
+}
+</script>
 <style>
   :root { --bg:#15121d; --card:#1f1a2b; --line:#ffffff14; --text:#f4f2f8; --muted:#a8a1b8;
           --c1:#7c3aed; --c2:#db2777; --c3:#f97316; --grad:linear-gradient(135deg,var(--c1),var(--c2) 55%,var(--c3)); }
@@ -70,6 +128,12 @@
   .tv .now { background:#10b98133; color:#6ee7b7; }
   .tv .next { background:#f9731633; color:#fdba74; }
 
+  details { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 20px; margin-bottom:12px; }
+  summary { cursor:pointer; font-weight:700; font-size:17.5px; list-style:none; }
+  summary::-webkit-details-marker { display:none; }
+  summary::after { content:"+"; float:right; color:var(--muted); font-weight:400; }
+  details[open] summary::after { content:"−"; }
+  details p { color:var(--muted); margin:10px 0 0; }
   pre { background:#0d0b12; border:1px solid var(--line); border-radius:14px; padding:18px 20px; overflow:auto; font-size:14.5px; color:#e9e5f2; }
   footer { border-top:1px solid var(--line); padding:30px 0 40px; color:var(--muted); font-size:14px; }
   footer .wrap { display:flex; gap:20px; flex-wrap:wrap; align-items:center; }
@@ -92,35 +156,37 @@
       <a href="#features">Features</a>
       <a href="#remote">Phone remote</a>
       <a href="#every-tv">Every TV</a>
+      <a href="#faq">FAQ</a>
       <a href="#start">Get started</a>
       <a class="gh" href="https://github.com/MKTVHub">GitHub</a>
     </div>
   </div>
 </nav>
 
+<main>
 <header class="hero">
   <div class="wrap">
     <div>
-      <h1>mkTV.<br>The web, made for your remote.</h1>
-      <p class="lead">An open-source browser for Android TV and Google TV. It blocks ads, lets you reach any button on a page with the D-pad, and turns your phone into a remote and keyboard.</p>
+      <h1>mkTV: the web browser made for your TV remote</h1>
+      <p class="lead">A free, open-source browser for Android TV and Google TV. It blocks ads, lets you reach any button on any website with the D-pad, plays videos full screen, and turns your phone into a remote and keyboard.</p>
       <div class="btns">
         <a class="btn solid" href="https://github.com/MKTVHub/mkTV">View on GitHub</a>
         <a class="btn ghost" href="#start">Install on your TV</a>
       </div>
     </div>
-    <img class="mark" src="assets/mark.png" alt="mkTV logo">
+    <img class="mark" src="assets/mark.png" alt="mkTV logo: white play button with mk inside" width="340" height="340">
   </div>
 </header>
 
 <section id="features">
   <div class="wrap">
-    <h2>Everything a TV browser should have been</h2>
-    <p class="sub">Websites are made for mice and touchscreens. mkTV makes them work from the sofa.</p>
+    <h2>An Android TV browser that is actually easy to use</h2>
+    <p class="sub">Websites are made for mice and touchscreens. mkTV makes them work from the sofa with nothing but your TV remote.</p>
     <div class="grid">
-      <div class="card"><div class="ic">🛡️</div><h3>Ads and trackers blocked</h3><p>Over 77,000 ad and tracker domains blocked, pop-ups and click-traps removed, tracking parameters stripped from links.</p></div>
-      <div class="card"><div class="ic">🎯</div><h3>Jump navigation</h3><p>Arrow keys jump straight to the next button, link or video. Hold ▲ or ▼ to reach a site's top or bottom bar. Prefer a mouse pointer? Switch any time.</p></div>
-      <div class="card"><div class="ic">▶️</div><h3>Watch mode</h3><p>When a video plays, a simple dock appears: play, seek, next, and true full screen. Streams can also open in a built-in native player.</p></div>
-      <div class="card"><div class="ic">📺</div><h3>YouTube, the TV way</h3><p>YouTube opens in its TV layout, so the remote feels natural. Sound turns on by itself, and video ads are skipped where possible.</p></div>
+      <div class="card"><div class="ic">🛡️</div><h3>Built-in ad blocker</h3><p>Over 77,000 ad and tracker domains blocked, pop-ups and click-traps removed, tracking parameters stripped from links.</p></div>
+      <div class="card"><div class="ic">🎯</div><h3>Remote-friendly jump navigation</h3><p>Arrow keys jump straight to the next button, link or video. Hold ▲ or ▼ to reach a site's top or bottom bar. Prefer a mouse pointer? Switch any time.</p></div>
+      <div class="card"><div class="ic">▶️</div><h3>Full-screen watch mode</h3><p>When a video plays, a simple dock appears: play, seek, next, and true full screen. Streams can also open in a built-in native player.</p></div>
+      <div class="card"><div class="ic">📺</div><h3>YouTube in TV mode</h3><p>YouTube opens in its TV layout, so the remote feels natural. Sound turns on by itself, and video ads are skipped where possible.</p></div>
       <div class="card"><div class="ic">🕶️</div><h3>Private browsing</h3><p>A separate private profile with nothing saved. History, cookies and cache are wiped when you leave it.</p></div>
       <div class="card"><div class="ic">⭐</div><h3>A home screen of tiles</h3><p>Popular sites, your favourites and recent pages as big, easy tiles. The top bar hides itself so pages get the full screen.</p></div>
     </div>
@@ -130,7 +196,7 @@
 <section id="remote">
   <div class="wrap remote">
     <div>
-      <h2>Your phone is the remote</h2>
+      <h2>Use your phone as a TV remote and keyboard</h2>
       <p class="sub">Typing with a D-pad is painful. With mkTV you scan a code and type on your phone instead. No app to install.</p>
       <ol class="steps">
         <li><b>Open ⋮ → Phone remote on the TV</b>A QR code appears.</li>
@@ -155,7 +221,7 @@
 
 <section id="every-tv">
   <div class="wrap">
-    <h2>Making every TV smart</h2>
+    <h2>Making every TV smart: Android TV today, LG and Samsung next</h2>
     <p class="sub">MKTVHub's goal is bigger than one platform. mkTV keeps its core ideas (blocking rules, page scripts, the phone-remote protocol) separate from Android so they can be ported. Developers are welcome to help.</p>
     <div class="tvs">
       <span class="tv">Android TV <em class="now">available</em></span>
@@ -168,9 +234,22 @@
   </div>
 </section>
 
+<section id="faq">
+  <div class="wrap">
+    <h2>Frequently asked questions</h2>
+    <p class="sub">Common questions about browsing the web on a TV with mkTV.</p>
+    <details><summary>What is the best way to browse the web on Android TV?</summary><p>Use a browser designed for the remote. mkTV lets the arrow keys jump between buttons, links and videos, so you never have to steer a slow mouse pointer, and you can type with your phone instead of the on-screen keyboard.</p></details>
+    <details><summary>Does mkTV block ads?</summary><p>Yes. mkTV blocks requests to more than 77,000 known ad and tracker domains, removes pop-ups and click-trap overlays, and strips tracking parameters from links. On YouTube it removes ad slots from the page data and skips video ads where it can, but no ad blocker catches every ad.</p></details>
+    <details><summary>Can I use my phone as a remote and keyboard for my TV browser?</summary><p>Yes. In mkTV open the menu and choose Phone remote, then scan the QR code with your phone. Your phone browser becomes a D-pad, media remote and keyboard. Both devices must be on the same Wi-Fi and no app install is needed.</p></details>
+    <details><summary>Is mkTV free?</summary><p>Yes. mkTV is free and open source under the Apache 2.0 license, with no accounts, no analytics and no ads of its own.</p></details>
+    <details><summary>Does mkTV work on Fire TV, LG or Samsung TVs?</summary><p>mkTV runs on Android TV and Google TV. Fire TV runs Android and may work by sideloading, but it is untested. LG webOS and Samsung Tizen ports are planned and open to contributors.</p></details>
+    <details><summary>How do I install mkTV on my TV?</summary><p>Download the APK from the GitHub Releases page once published, or build it from source with Gradle, then install it with adb or a sideloading app. mkTV needs Android 7.0 or newer.</p></details>
+  </div>
+</section>
+
 <section id="start">
   <div class="wrap">
-    <h2>Get started</h2>
+    <h2>Install mkTV on your Android TV</h2>
     <p class="sub">Ready-made APKs will be on the <a href="https://github.com/MKTVHub/mkTV/releases">Releases page</a>. Until then, build it yourself (JDK 17, Android SDK 35):</p>
 <pre>git clone https://github.com/MKTVHub/mkTV.git && cd mkTV
 ./gradlew assembleDebug
@@ -179,6 +258,7 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk</pre>
     <p class="sub" style="margin-top:24px">Want to contribute? Start with <a href="https://github.com/MKTVHub/mkTV/blob/main/AGENTS.md">AGENTS.md</a>, <a href="https://github.com/MKTVHub/mkTV/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> and the <a href="https://github.com/MKTVHub/mkTV/blob/main/docs/ROADMAP.md">roadmap</a>.</p>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="wrap">

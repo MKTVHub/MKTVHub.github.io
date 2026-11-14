@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mktvhub.github.io/sitemap.xml
