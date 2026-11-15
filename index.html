@@ -77,6 +77,14 @@
           "acceptedAnswer": { "@type": "Answer", "text": "Yes. mkTV is free and open source under the Apache 2.0 license, with no accounts, no analytics and no ads of its own." } },
         { "@type": "Question", "name": "Does mkTV work on Fire TV, LG or Samsung TVs?",
           "acceptedAnswer": { "@type": "Answer", "text": "mkTV runs on Android TV and Google TV. Fire TV runs Android and may work by sideloading, but it is untested. LG webOS and Samsung Tizen ports are planned and open to contributors." } },
+        { "@type": "Question", "name": "The phone remote says \"This site can't be reached\". What do I do?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Make sure the phone is on the exact same Wi-Fi as the TV (its IP should start like the TV's, for example 192.168.0.), turn off mobile data and any VPN or ad-blocker on the phone, and scan the QR code that is on the TV now, because the code changes each time mkTV restarts. Some routers block Wi-Fi devices from seeing each other (client isolation, common on guest networks)." } },
+        { "@type": "Question", "name": "Does mkTV work with a VPN on the TV?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Most VPNs, such as NordVPN, Proton and Surfshark, keep your home network outside the tunnel, so the phone remote keeps working. If mkTV shows a VPN warning on the Phone remote screen, turn on Allow LAN or local network access in the VPN app, or exclude mkTV with split tunneling." } },
+        { "@type": "Question", "name": "Why doesn't Share Wi-Fi show my network name?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Android only reveals the Wi-Fi name to apps allowed to use location, and only while Location is turned on in the TV settings. You can also type the name once and mkTV remembers it." } },
+        { "@type": "Question", "name": "Do Netflix, Prime Video and Disney+ work in mkTV?",
+          "acceptedAnswer": { "@type": "Answer", "text": "mkTV supports copy-protected video, but each service decides what a browser may play. Some limit quality or block TV browsers, so their own TV apps may work better." } },
         { "@type": "Question", "name": "How do I install mkTV on my TV?",
           "acceptedAnswer": { "@type": "Answer", "text": "Download mkTV.apk from the MKTVHub GitHub Releases page and install it with adb or a sideloading app such as Downloader or Send Files to TV. You can also build it from source with Gradle. mkTV needs Android 7.0 or newer." } }
       ]
@@ -313,6 +321,10 @@
     <details><summary>Can I use my phone as a remote and keyboard for my TV browser?</summary><p>Yes. In mkTV open the menu and choose Phone remote, then scan the QR code with your phone. Your phone browser becomes a D-pad, media remote and keyboard. Both devices must be on the same Wi-Fi and no app install is needed.</p></details>
     <details><summary>Is mkTV free?</summary><p>Yes. mkTV is free and open source under the Apache 2.0 license, with no accounts, no analytics and no ads of its own.</p></details>
     <details><summary>Does mkTV work on Fire TV, LG or Samsung TVs?</summary><p>mkTV runs on Android TV and Google TV. Fire TV runs Android and may work by sideloading, but it is untested. LG webOS and Samsung Tizen ports are planned and open to contributors.</p></details>
+    <details><summary>The phone remote says "This site can't be reached". What do I do?</summary><p>Make sure the phone is on the exact same Wi-Fi as the TV (its IP should start like the TV's, for example 192.168.0.), turn off mobile data and any VPN or ad-blocker on the phone, and scan the QR code that is on the TV now, because the code changes each time mkTV restarts. Some routers block Wi-Fi devices from seeing each other (client isolation, common on guest networks).</p></details>
+    <details><summary>Does mkTV work with a VPN on the TV?</summary><p>Yes. Most VPNs, such as NordVPN, Proton and Surfshark, keep your home network outside the tunnel, so the phone remote keeps working. If mkTV shows a VPN warning on the Phone remote screen, turn on Allow LAN or local network access in the VPN app, or exclude mkTV with split tunneling.</p></details>
+    <details><summary>Why doesn't Share Wi-Fi show my network name?</summary><p>Android only reveals the Wi-Fi name to apps allowed to use location, and only while Location is turned on in the TV settings. You can also type the name once and mkTV remembers it.</p></details>
+    <details><summary>Do Netflix, Prime Video and Disney+ work in mkTV?</summary><p>mkTV supports copy-protected video, but each service decides what a browser may play. Some limit quality or block TV browsers, so their own TV apps may work better.</p></details>
     <details><summary>How do I install mkTV on my TV?</summary><p>Download mkTV.apk from the MKTVHub GitHub Releases page and install it with adb or a sideloading app such as Downloader or Send Files to TV. You can also build it from source with Gradle. mkTV needs Android 7.0 or newer.</p></details>
   </div>
 </section>
