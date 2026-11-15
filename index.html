@@ -68,296 +68,279 @@
       "@type": "FAQPage",
       "mainEntity": [
         { "@type": "Question", "name": "What is the best way to browse the web on Android TV?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Use a browser designed for the remote. mkTV lets the arrow keys jump between buttons, links and videos, so you never have to steer a slow mouse pointer, and you can type with your phone instead of the on-screen keyboard." } },
+          "acceptedAnswer": { "@type": "Answer", "text": "Use a browser designed for the remote. In mkTV the arrow keys jump between links, buttons and videos, so there is no slow mouse pointer, and you can type on your phone instead of the on-screen keyboard." } },
         { "@type": "Question", "name": "Does mkTV block ads?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. mkTV blocks requests to more than 77,000 known ad and tracker domains, removes pop-ups and click-trap overlays, and strips tracking parameters from links. On YouTube it removes ad slots from the page data and skips video ads where it can, but no ad blocker catches every ad." } },
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. mkTV blocks more than 77,000 known ad and tracker domains, removes pop-ups and click-trap overlays, and strips tracking codes from links. On YouTube it removes ad slots and skips video ads where it can, but no ad blocker catches every ad." } },
         { "@type": "Question", "name": "Can I use my phone as a remote and keyboard for my TV browser?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. In mkTV open the menu and choose Phone remote, then scan the QR code with your phone. Your phone browser becomes a D-pad, media remote and keyboard. Both devices must be on the same Wi-Fi and no app install is needed." } },
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Open the ⋮ menu in mkTV, choose Phone remote and scan the QR code. Your phone's browser becomes a D-pad, media remote and keyboard. No app install is needed; both devices must be on the same Wi-Fi." } },
         { "@type": "Question", "name": "Is mkTV free?",
           "acceptedAnswer": { "@type": "Answer", "text": "Yes. mkTV is free and open source under the Apache 2.0 license, with no accounts, no analytics and no ads of its own." } },
         { "@type": "Question", "name": "Does mkTV work on Fire TV, LG or Samsung TVs?",
           "acceptedAnswer": { "@type": "Answer", "text": "mkTV runs on Android TV and Google TV. Fire TV runs Android and may work by sideloading, but it is untested. LG webOS and Samsung Tizen ports are planned and open to contributors." } },
         { "@type": "Question", "name": "The phone remote says \"This site can't be reached\". What do I do?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Make sure the phone is on the exact same Wi-Fi as the TV (its IP should start like the TV's, for example 192.168.0.), turn off mobile data and any VPN or ad-blocker on the phone, and scan the QR code that is on the TV now, because the code changes each time mkTV restarts. Some routers block Wi-Fi devices from seeing each other (client isolation, common on guest networks)." } },
+          "acceptedAnswer": { "@type": "Answer", "text": "Put the phone on the same Wi-Fi as the TV, turn off mobile data and any VPN or ad blocker on the phone, and scan the QR code that is on the TV now, because it changes each time mkTV restarts. Some routers, often on guest networks, stop Wi-Fi devices from seeing each other." } },
+        { "@type": "Question", "name": "Chrome switches the phone remote link to https. What do I do?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Tap Continue to site, or turn off Always use secure connections in Chrome's settings. mkTV refuses https on purpose, so the browser falls back to http." } },
         { "@type": "Question", "name": "Does mkTV work with a VPN on the TV?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Most VPNs, such as NordVPN, Proton and Surfshark, keep your home network outside the tunnel, so the phone remote keeps working. If mkTV shows a VPN warning on the Phone remote screen, turn on Allow LAN or local network access in the VPN app, or exclude mkTV with split tunneling." } },
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Most VPNs keep your home network outside the tunnel, so the phone remote keeps working. If the Phone remote screen shows a VPN warning, turn on Allow LAN or local network access in the VPN app, or exclude mkTV with split tunneling." } },
         { "@type": "Question", "name": "Why doesn't Share Wi-Fi show my network name?",
           "acceptedAnswer": { "@type": "Answer", "text": "Android only reveals the Wi-Fi name to apps allowed to use location, and only while Location is turned on in the TV settings. You can also type the name once and mkTV remembers it." } },
         { "@type": "Question", "name": "Do Netflix, Prime Video and Disney+ work in mkTV?",
           "acceptedAnswer": { "@type": "Answer", "text": "mkTV supports copy-protected video, but each service decides what a browser may play. Some limit quality or block TV browsers, so their own TV apps may work better." } },
         { "@type": "Question", "name": "How do I install mkTV on my TV?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Download mkTV.apk from the MKTVHub GitHub Releases page and install it with adb or a sideloading app such as Downloader or Send Files to TV. You can also build it from source with Gradle. mkTV needs Android 7.0 or newer." } }
+          "acceptedAnswer": { "@type": "Answer", "text": "Download mkTV.apk from the MKTVHub GitHub Releases page and install it with a sideloading app such as Downloader or Send Files to TV, or from a computer with adb over Wi-Fi. mkTV needs Android 7.0 or newer." } }
       ]
     }
   ]
 }
 </script>
 <style>
-  :root { --bg:#15121d; --card:#1f1a2b; --line:#ffffff14; --text:#f4f2f8; --muted:#a8a1b8;
-          --c1:#7c3aed; --c2:#db2777; --c3:#f97316; --grad:linear-gradient(135deg,var(--c1),var(--c2) 55%,var(--c3)); }
+  :root { --bg:#15121d; --card:#1c1827; --line:#ffffff14; --text:#f4f2f8; --muted:#aaa3ba;
+          --c1:#7c3aed; --c2:#db2777; --c3:#f97316;
+          --grad:linear-gradient(135deg,var(--c1),var(--c2) 60%,var(--c3));
+          --btn:linear-gradient(135deg,var(--c1),var(--c2));
+          --s1:8px; --s2:16px; --s3:24px; --s4:40px; --s5:64px; --s6:96px; }
   * { box-sizing:border-box; }
-  html { scroll-behavior:smooth; }
-  body { margin:0; background:var(--bg); color:var(--text); font:17px/1.6 -apple-system,system-ui,"Segoe UI",Roboto,sans-serif; }
+  html { scroll-behavior:smooth; scroll-padding-top:72px; }
+  body { margin:0; background:var(--bg); color:var(--text); font:17px/1.6 -apple-system,system-ui,"Segoe UI",Roboto,sans-serif; -webkit-text-size-adjust:100%; }
+  img, video { max-width:100%; height:auto; display:block; }
   a { color:inherit; }
-  .wrap { max-width:1100px; margin:0 auto; padding:0 24px; }
+  :focus-visible { outline:2px solid #f9a8d4; outline-offset:3px; border-radius:6px; }
+  .wrap { max-width:1120px; margin:0 auto; padding:0 20px; }
+  .skip { position:absolute; left:-999px; top:8px; background:#fff; color:#15121d; padding:10px 14px; border-radius:8px; z-index:20; }
+  .skip:focus { left:8px; }
 
-  nav { position:sticky; top:0; z-index:10; backdrop-filter:blur(12px); background:#15121dcc; border-bottom:1px solid var(--line); }
-  nav .wrap { display:flex; align-items:center; gap:28px; height:64px; }
-  .brand { display:flex; align-items:center; gap:10px; font-weight:800; font-size:19px; text-decoration:none; }
-  .brand i { width:34px; height:34px; border-radius:9px; background:var(--grad); display:grid; place-items:center; }
-  .brand i img { width:24px; }
-  nav .links { margin-left:auto; display:flex; gap:24px; font-size:15px; }
-  nav .links a { text-decoration:none; color:var(--muted); display:inline-flex; align-items:center; gap:7px; transition:color .15s; }
-  nav .links a svg { opacity:.85; flex:none; }
-  nav .links a:hover svg { opacity:1; color:#f472b6; }
-  nav .links a:hover { color:var(--text); }
-  nav .links a.gh { color:var(--text); padding:7px 14px; border-radius:10px; border:1px solid #ffffff26; background:#ffffff0d; }
-  nav .links a.gh:hover { background:#ffffff1a; }
+  /* nav */
+  .nav { position:sticky; top:0; z-index:10; background:#15121de6; backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid var(--line); }
+  .nav .wrap { display:flex; align-items:center; gap:var(--s3); height:60px; }
+  .brand { display:flex; align-items:center; gap:10px; min-height:44px; font-weight:800; font-size:18px; text-decoration:none; }
+  .brand i { width:32px; height:32px; border-radius:9px; background:var(--grad); display:grid; place-items:center; }
+  .brand i img { width:22px; height:22px; }
+  .nav nav { margin-left:auto; }
+  .nav ul { display:flex; gap:var(--s1); list-style:none; margin:0; padding:0; }
+  .nav ul a { display:flex; align-items:center; min-height:44px; padding:0 12px; color:var(--muted); text-decoration:none; font-size:15px; border-radius:10px; }
+  .nav ul a:hover { color:var(--text); }
+  .nav .acts { display:flex; gap:var(--s1); align-items:center; }
+  .icon-btn { width:44px; height:44px; display:grid; place-items:center; border-radius:12px; color:var(--text); border:1px solid #ffffff1f; }
+  .icon-btn:hover { background:#ffffff0f; }
+  .nav .btn { min-height:44px; padding:0 16px; font-size:15px; }
 
-  .hero { background:var(--grad); position:relative; overflow:hidden; }
-  .hero::after { content:""; position:absolute; inset:auto 0 0 0; height:120px; background:linear-gradient(transparent,var(--bg)); }
-  .hero .wrap { display:grid; grid-template-columns:1.2fr .8fr; gap:40px; align-items:center; padding-top:90px; padding-bottom:140px; position:relative; z-index:1; }
-  .hero h1 { font-size:clamp(42px,6vw,72px); line-height:1.05; margin:0 0 18px; letter-spacing:-.02em; }
-  .hero p.lead { font-size:21px; margin:0 0 30px; max-width:560px; color:#fff; opacity:.95; }
-  .hero .mark { width:100%; max-width:340px; justify-self:center; filter:drop-shadow(0 20px 40px #0004); }
-  .btns { display:flex; gap:14px; flex-wrap:wrap; }
-  .btn { display:inline-flex; align-items:center; gap:8px; padding:14px 22px; border-radius:14px; font-weight:700; text-decoration:none; font-size:16px; }
-  .btn.solid { background:#fff; color:#2a1440; }
-  .btn.ghost { background:#ffffff22; color:#fff; border:1px solid #ffffff55; }
+  /* buttons */
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:52px; padding:0 22px; border-radius:14px; font-weight:700; font-size:16px; text-decoration:none; transition:transform .15s, background .15s; }
+  .btn.primary { background:var(--btn); color:#fff; box-shadow:0 8px 24px #db277733; }
+  .btn.secondary { color:var(--text); border:1px solid #ffffff2e; background:#ffffff08; }
+  .btn.secondary:hover { background:#ffffff12; }
   .btn:hover { transform:translateY(-1px); }
-  .stars { background:#2a144018; border-radius:8px; padding:2px 8px; font-size:14px; }
-  .starcta { margin-top:34px; padding:22px 26px; border-radius:18px; background:linear-gradient(135deg,#7c3aed22,#db277722,#f9731622); border:1px solid #ffffff22; display:flex; gap:18px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
-  .starcta p { margin:0; font-size:17px; }
+  .stars { font-size:14px; font-weight:600; color:var(--muted); padding-left:10px; border-left:1px solid #ffffff2e; }
 
-  section { padding:70px 0; }
-  h2 { font-size:34px; margin:0 0 10px; letter-spacing:-.01em; }
-  .sub { color:var(--muted); margin:0 0 36px; max-width:680px; }
-  .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
-  .card { background:var(--card); border:1px solid var(--line); border-radius:18px; padding:24px; }
-  .card .ic { width:44px; height:44px; border-radius:12px; background:var(--grad); display:grid; place-items:center; font-size:22px; margin-bottom:14px; }
-  .card h3 { margin:0 0 6px; font-size:19px; }
-  .card p { margin:0; color:var(--muted); font-size:15.5px; }
+  /* hero */
+  .hero { position:relative; overflow:hidden; padding:var(--s4) 0 var(--s3); }
+  .hero::before { content:""; position:absolute; inset:-30% -20% auto auto; width:900px; height:700px; background:radial-gradient(closest-side,#7c3aed40,#db277718 55%,transparent); pointer-events:none; }
+  .hero .wrap { position:relative; display:grid; gap:var(--s4); align-items:center; }
+  .eyebrow, h1 { text-wrap:balance; }
+  .eyebrow { margin:0 0 var(--s2); color:var(--muted); font-size:14px; font-weight:600; letter-spacing:.02em; }
+  h1 { font-size:clamp(36px,7.5vw,60px); line-height:1.06; letter-spacing:-.025em; margin:0 0 var(--s2); }
+  .lead { font-size:clamp(17px,2.2vw,20px); color:var(--muted); margin:0 0 var(--s3); max-width:34em; }
+  .ctas { display:flex; flex-wrap:wrap; gap:12px; }
+  .meta { margin:var(--s2) 0 0; font-size:14px; color:var(--muted); }
+  .tv { border-radius:16px; overflow:hidden; border:1px solid #ffffff1f; box-shadow:0 30px 80px #0009, 0 0 0 6px #ffffff08; background:#000; }
 
-  .remote { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; }
-  .steps { counter-reset:s; list-style:none; padding:0; margin:0; }
-  .steps li { counter-increment:s; position:relative; padding:0 0 18px 52px; color:var(--muted); }
-  .steps li b { color:var(--text); display:block; }
-  .steps li::before { content:counter(s); position:absolute; left:0; top:0; width:36px; height:36px; border-radius:50%; background:var(--grad); color:#fff; font-weight:800; display:grid; place-items:center; }
-  .phone { justify-self:center; width:250px; border-radius:36px; background:#0d0b12; border:2px solid #ffffff22; padding:22px 18px; box-shadow:0 30px 60px #0007; }
-  .phone .pad { width:180px; height:180px; margin:10px auto 18px; border-radius:50%; background:radial-gradient(circle at 50% 40%,#3a3152,#2d2640); position:relative; }
-  .phone .pad span { position:absolute; color:#fff; font-size:18px; }
-  .phone .ok { left:50%; top:50%; transform:translate(-50%,-50%); width:66px; height:66px; border-radius:50%; background:linear-gradient(135deg,var(--c1),var(--c2)); display:grid; place-items:center; font-weight:800; font-size:15px !important; }
-  .phone .row { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:8px; }
-  .phone .row div { height:38px; border-radius:11px; background:#2d2640; display:grid; place-items:center; font-size:13px; color:#ddd; }
+  /* sections */
+  section { padding:48px 0; }
+  h2 { font-size:clamp(26px,4.5vw,36px); line-height:1.15; letter-spacing:-.015em; margin:0 0 var(--s1); }
+  .sub { color:var(--muted); margin:0 0 var(--s4); max-width:36em; }
+  .center { text-align:center; }
+  .center .sub { margin-left:auto; margin-right:auto; }
 
-  .tvs { display:flex; flex-wrap:wrap; gap:12px; }
-  .tv { padding:12px 18px; border-radius:999px; border:1px solid var(--line); background:var(--card); font-weight:600; font-size:15px; }
-  .tv em { font-style:normal; font-size:12px; margin-left:8px; padding:2px 8px; border-radius:999px; }
-  .tv .now { background:#10b98133; color:#6ee7b7; }
-  .tv .next { background:#f9731633; color:#fdba74; }
+  .film video { width:100%; max-width:960px; margin:0 auto; border-radius:16px; border:1px solid var(--line); background:#000; }
+  .film .hint { margin:12px 0 0; font-size:14px; color:var(--muted); text-align:center; }
 
-  details { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 20px; margin-bottom:12px; }
-  summary { cursor:pointer; font-weight:700; font-size:17.5px; list-style:none; }
+  .features { display:grid; gap:var(--s2); grid-template-columns:1fr; list-style:none; margin:0; padding:0; }
+  .feature { display:grid; grid-template-columns:auto 1fr; column-gap:var(--s2); align-items:start; align-content:start; background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px; }
+  .feature svg { grid-row:1 / 3; width:40px; height:40px; padding:9px; border-radius:11px; background:#7c3aed26; color:#f0abfc; }
+  .feature h3 { font-size:17px; margin:6px 0 2px; }
+  .feature p { margin:0; color:var(--muted); }
+
+  .gallery { display:flex; gap:var(--s2); overflow-x:auto; scroll-snap-type:x mandatory; margin:0 -20px; padding:0 20px 12px; scroll-padding:0 20px; list-style:none; scrollbar-width:thin; scrollbar-color:#ffffff33 transparent; }
+  .gallery li { flex:0 0 86%; scroll-snap-align:start; }
+  .gallery a { display:block; border-radius:12px; overflow:hidden; border:1px solid var(--line); background:#000; }
+  .gallery p { margin:10px 0 0; font-size:15px; font-weight:600; }
+  .credits { color:#8f88a3; font-size:13px; margin:var(--s3) 0 0; }
+
+  .steps { counter-reset:s; list-style:none; margin:0; padding:0; display:grid; gap:var(--s2); }
+  .steps li { counter-increment:s; position:relative; padding:var(--s3) var(--s3) var(--s3) 76px; background:var(--card); border:1px solid var(--line); border-radius:16px; }
+  .steps li::before { content:counter(s); position:absolute; left:var(--s3); top:var(--s3); width:36px; height:36px; border-radius:50%; background:var(--btn); color:#fff; font-weight:800; display:grid; place-items:center; }
+  .steps h3 { margin:4px 0 4px; font-size:17px; }
+  .steps p { margin:0; color:var(--muted); }
+  .steps a { color:var(--text); text-underline-offset:3px; padding:13px 0; }
+
+  .faq { max-width:780px; }
+  details { border-bottom:1px solid var(--line); }
+  details:first-of-type { border-top:1px solid var(--line); }
+  summary { cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; gap:var(--s2); min-height:56px; padding:var(--s2) 0; font-weight:600; font-size:17px; }
   summary::-webkit-details-marker { display:none; }
-  summary::after { content:"+"; float:right; color:var(--muted); font-weight:400; }
+  summary::after { content:"+"; flex:none; font-size:22px; font-weight:400; color:var(--muted); }
   details[open] summary::after { content:"−"; }
-  details p { color:var(--muted); margin:10px 0 0; }
-  .film { margin-top:-70px; position:relative; z-index:2; padding:0 0 30px; }
-  .film video { display:block; width:100%; height:auto; border-radius:20px; border:1px solid var(--line); box-shadow:0 30px 70px #0009; background:#000; }
-  .film p { color:var(--muted); font-size:14px; margin-top:12px; text-align:center; }
-  .shots { display:grid; grid-template-columns:repeat(2,1fr); gap:22px; }
-  .shot { margin:0; }
-  .shot a { display:block; border-radius:16px; overflow:hidden; border:1px solid var(--line); box-shadow:0 18px 40px #0006; background:#000; transition:transform .2s; }
-  .shot a:hover { transform:translateY(-3px); }
-  .shot img { display:block; width:100%; height:auto; }
-  .shot figcaption { margin-top:12px; color:var(--muted); font-size:15px; }
-  .shot figcaption b { color:var(--text); display:block; font-size:17px; margin-bottom:2px; }
-  .shot.wide { grid-column:1 / -1; }
-  .phone-shot { justify-self:center; width:290px; border-radius:38px; border:8px solid #2a2438; overflow:hidden; box-shadow:0 30px 60px #0008; }
-  .phone-shot img { display:block; width:100%; height:auto; }
-  .credits { color:#7d7690; font-size:13px; margin-top:26px; }
-  @media (max-width:860px) { .shots { grid-template-columns:1fr; } }
-  pre { background:#0d0b12; border:1px solid var(--line); border-radius:14px; padding:18px 20px; overflow:auto; font-size:14.5px; color:#e9e5f2; }
-  footer { border-top:1px solid var(--line); padding:30px 0 40px; color:var(--muted); font-size:14px; }
-  footer .wrap { display:flex; gap:20px; flex-wrap:wrap; align-items:center; }
-  footer .wrap span:last-child { margin-left:auto; }
+  details p { margin:0 0 var(--s3); color:var(--muted); }
 
-  @media (max-width:860px) {
-    .hero .wrap, .remote { grid-template-columns:1fr; }
-    .hero .mark { max-width:200px; grid-row:1; }
-    .grid { grid-template-columns:1fr; }
-    nav .links a:not(.gh) { display:none; }
+  footer { border-top:1px solid var(--line); padding:var(--s4) 0; color:var(--muted); font-size:14px; }
+  footer .wrap { display:flex; flex-wrap:wrap; gap:4px var(--s3); align-items:center; }
+  footer ul { display:flex; flex-wrap:wrap; gap:0 var(--s3); list-style:none; margin:0; padding:0; }
+  footer a { display:inline-flex; align-items:center; min-height:44px; text-decoration:none; }
+  footer a:hover { color:var(--text); }
+  footer small { flex-basis:100%; font-size:13px; color:#8f88a3; }
+
+  @media (max-width:759px) {
+    .nav nav { display:none; }
+    .nav .acts { margin-left:auto; }
+  }
+  @media (max-width:599px) {
+    .ctas .btn { flex:1 1 100%; }
+  }
+  @media (min-width:600px) {
+    .wrap { padding:0 32px; }
+    .features { grid-template-columns:1fr 1fr; }
+    .gallery { margin:0 -32px; padding:0 32px 12px; scroll-padding:0 32px; }
+    .gallery li { flex-basis:60%; }
+  }
+  @media (min-width:960px) {
+    section { padding:80px 0; }
+    .hero { padding:var(--s6) 0 var(--s5); }
+    .hero .wrap { grid-template-columns:5fr 6fr; gap:var(--s5); }
+    .features { grid-template-columns:repeat(3,1fr); }
+    .gallery { display:grid; grid-template-columns:repeat(3,1fr); gap:var(--s3); overflow:visible; margin:0; padding:0; }
+    .steps { grid-template-columns:repeat(3,1fr); }
+    .steps li { padding:76px var(--s3) var(--s3); }
+    .steps li::before { top:var(--s3); }
+  }
+  @media (prefers-reduced-motion:reduce) {
+    html { scroll-behavior:auto; }
+    *, *::before, *::after { transition:none !important; animation:none !important; }
+    .btn:hover { transform:none; }
   }
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
-<nav>
+<header class="nav">
   <div class="wrap">
-    <a class="brand" href="#"><i><img src="assets/mark.png" alt=""></i>MKTVHub</a>
-    <div class="links">
-      <a href="#screenshots"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2.5"/><circle cx="9" cy="10" r="1.6"/><path d="M21 15l-5-5-8 8"/></svg>Screenshots</a>
-      <a href="#features"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.8H20l-4.9 3.6 1.9 5.8L12 14.6l-5 3.6 1.9-5.8L4 8.8h6.1z"/></svg>Features</a>
-      <a href="#remote"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg>Phone remote</a>
-      <a href="#every-tv"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="13" rx="2.5"/><path d="M8 2l4 4 4-4"/></svg>Every TV</a>
-      <a href="#faq"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M9.3 9.2a2.8 2.8 0 0 1 5.4 1c0 1.9-2.7 2.4-2.7 4"/><path d="M12 17.5h.01"/></svg>FAQ</a>
-      <a href="#start"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 20h16"/></svg>Get started</a>
-      <a class="gh" href="https://github.com/MKTVHub"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg>GitHub</a>
+    <a class="brand" href="#"><i><img src="assets/mark.png" alt="" width="22" height="22"></i>mkTV</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#screenshots">Screenshots</a></li>
+        <li><a href="#install">Install</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <div class="acts">
+      <a class="icon-btn" href="https://github.com/MKTVHub/mkTV" aria-label="mkTV on GitHub"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg></a>
+      <a class="btn primary" href="https://github.com/MKTVHub/mkTV/releases/latest/download/mkTV.apk">Download</a>
     </div>
-  </div>
-</nav>
-
-<main>
-<header class="hero">
-  <div class="wrap">
-    <div>
-      <h1>mkTV: the web browser made for your TV remote</h1>
-      <p class="lead">A free, open-source browser for Android TV and Google TV. It blocks ads, lets you reach any button on any website with the D-pad, plays videos full screen, and turns your phone into a remote and keyboard.</p>
-      <div class="btns">
-        <a class="btn solid" href="https://github.com/MKTVHub/mkTV">★ Star on GitHub<span class="stars" hidden></span></a>
-        <a class="btn ghost" href="https://github.com/MKTVHub/mkTV/releases/latest/download/mkTV.apk">⬇ Download APK</a>
-      </div>
-    </div>
-    <img class="mark" src="assets/mark.png" alt="mkTV logo: white play button with mk inside" width="340" height="340">
   </div>
 </header>
 
-<section class="film" aria-label="mkTV in 30 seconds">
+<main id="main">
+<section class="hero" aria-labelledby="hero-title">
   <div class="wrap">
-    <video src="assets/mktv-promo.mp4" poster="assets/mktv-promo-poster.jpg" width="1280" height="720" autoplay muted loop playsinline preload="metadata" controls aria-label="mkTV promo video: jump navigation, ad blocking, watch mode, phone remote and private browsing on a TV"></video>
-    <p>mkTV in 30 seconds, on a real Google TV. Turn the sound on 🔊 for the voice-over.</p>
+    <div>
+      <p class="eyebrow">Free and open source · Android TV &amp; Google TV</p>
+      <h1 id="hero-title">mkTV: the web browser made for your TV remote</h1>
+      <p class="lead">Block ads, reach any link with the D-pad, and type from your phone.</p>
+      <div class="ctas">
+        <a class="btn primary" href="https://github.com/MKTVHub/mkTV/releases/latest/download/mkTV.apk"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg>Download APK</a>
+        <a class="btn secondary" href="https://github.com/MKTVHub/mkTV"><span aria-hidden="true">★</span> Star on GitHub<span class="stars" hidden></span></a>
+      </div>
+      <p class="meta">Version 1.0.1 · 4.7 MB · Android 7.0+</p>
+    </div>
+    <div class="tv"><img src="assets/screens/home.jpg" width="1280" height="720" fetchpriority="high" alt="mkTV home screen on a Google TV with big tiles for YouTube, YouTube Music, TikTok, Twitch and Dailymotion"></div>
   </div>
 </section>
 
-<section id="screenshots">
+<section class="film" aria-labelledby="film-title">
   <div class="wrap">
-    <h2>See mkTV on a real TV</h2>
-    <p class="sub">Real screenshots from mkTV running on a Google TV, controlled with the normal remote.</p>
-    <div class="shots">
-      <figure class="shot wide">
-        <a href="assets/screens/home.jpg"><img src="assets/screens/home.jpg" width="1280" height="720" loading="lazy" alt="mkTV home screen on Android TV with YouTube, YouTube Music, TikTok, Twitch and Dailymotion tiles"></a>
-        <figcaption><b>Home screen</b>Popular sites, Favourites and Recent pages as big tiles you can reach with the D-pad.</figcaption>
-      </figure>
-      <figure class="shot">
-        <a href="assets/screens/jump-navigation.jpg"><img src="assets/screens/jump-navigation.jpg" width="1280" height="720" loading="lazy" alt="mkTV jump navigation highlighting a link on a Wikipedia article"></a>
-        <figcaption><b>Jump navigation</b>The highlight jumps straight to the next link or button. No slow mouse pointer.</figcaption>
-      </figure>
-      <figure class="shot">
-        <a href="assets/screens/watch-mode.jpg"><img src="assets/screens/watch-mode.jpg" width="1280" height="720" loading="lazy" alt="mkTV watch mode dock over a playing video"></a>
-        <figcaption><b>Watch mode</b>When a video plays, a simple dock shows the remote keys: full screen, seek, pause, back.</figcaption>
-      </figure>
-      <figure class="shot">
-        <a href="assets/screens/ad-blocker.jpg"><img src="assets/screens/ad-blocker.jpg" width="1280" height="720" loading="lazy" alt="mkTV ad blocker panel showing ads and trackers blocked on a website"></a>
-        <figcaption><b>Built-in ad blocker</b>See what was blocked on each site, and pause blocking for one site if it breaks.</figcaption>
-      </figure>
-      <figure class="shot">
-        <a href="assets/screens/phone-remote-qr.jpg"><img src="assets/screens/phone-remote-qr.jpg" width="1280" height="720" loading="lazy" alt="mkTV phone remote pairing screen with a QR code"></a>
-        <figcaption><b>Phone remote</b>Scan the QR code and your phone becomes a remote and keyboard.</figcaption>
-      </figure>
-      <figure class="shot">
-        <a href="assets/screens/private-browsing.jpg"><img src="assets/screens/private-browsing.jpg" width="1280" height="720" loading="lazy" alt="mkTV private browsing screen"></a>
-        <figcaption><b>Private browsing</b>A separate profile. History, cookies and site data are erased when you leave.</figcaption>
-      </figure>
-      <figure class="shot">
-        <a href="assets/screens/menu.jpg"><img src="assets/screens/menu.jpg" width="1280" height="720" loading="lazy" alt="mkTV menu with Add to Favourites, Private browsing, Navigation, Desktop site, Phone remote and Settings"></a>
-        <figcaption><b>Everything in one menu</b>Favourites, private mode, navigation style, desktop sites, phone remote and clearing data.</figcaption>
-      </figure>
+    <div class="center">
+      <h2 id="film-title">mkTV in 30 seconds</h2>
+      <p class="sub">Recorded on a real Google TV.</p>
     </div>
+    <video src="assets/mktv-promo.mp4" poster="assets/mktv-promo-poster.jpg" width="1280" height="720" autoplay muted loop playsinline preload="metadata" controls aria-label="mkTV promo video: jump navigation, ad blocking, watch mode, phone remote and private browsing on a TV"></video>
+    <p class="hint">Turn the sound on for the voice-over.</p>
+  </div>
+</section>
+
+<section id="features" aria-labelledby="features-title">
+  <div class="wrap">
+    <h2 id="features-title">Made for the sofa</h2>
+    <p class="sub">Websites expect a mouse. mkTV makes them work with a remote.</p>
+    <ul class="features">
+      <li class="feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8M13 9l3 3-3 3"/></svg><h3>Jump navigation</h3><p>Arrow keys jump straight to the next link or button.</p></li>
+      <li class="feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><h3>Ads blocked</h3><p>Ads, trackers, pop-ups and click-traps, gone.</p></li>
+      <li class="feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="14" rx="2.5"/><path d="M10 8.5v5l4-2.5z"/><path d="M8 21h8"/></svg><h3>Full-screen watch mode</h3><p>When a video plays, the remote controls it.</p></li>
+      <li class="feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg><h3>Phone as remote</h3><p>Scan a QR code to type and tap from your phone.</p></li>
+      <li class="feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><h3>Private browsing</h3><p>A separate session, erased when you close it.</p></li>
+      <li class="feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/></svg><h3>History and updates</h3><p>Find any page again; new versions install in one press.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section id="screenshots" aria-labelledby="screens-title">
+  <div class="wrap">
+    <h2 id="screens-title">See it on a real TV</h2>
+    <p class="sub">Unedited screenshots from a Google TV.</p>
+    <ul class="gallery">
+      <li><a href="assets/screens/jump-navigation.jpg"><img src="assets/screens/jump-navigation.jpg" width="1280" height="720" loading="lazy" alt="mkTV jump navigation highlighting a link on a Wikipedia article"></a><p>Jump navigation</p></li>
+      <li><a href="assets/screens/watch-mode.jpg"><img src="assets/screens/watch-mode.jpg" width="1280" height="720" loading="lazy" alt="mkTV watch mode dock over a playing video"></a><p>Watch mode</p></li>
+      <li><a href="assets/screens/ad-blocker.jpg"><img src="assets/screens/ad-blocker.jpg" width="1280" height="720" loading="lazy" alt="mkTV ad blocker panel showing ads and trackers blocked on a website"></a><p>Ad blocker</p></li>
+      <li><a href="assets/screens/phone-remote-qr.jpg"><img src="assets/screens/phone-remote-qr.jpg" width="1280" height="720" loading="lazy" alt="mkTV phone remote pairing screen with a QR code"></a><p>Phone remote</p></li>
+      <li><a href="assets/screens/private-browsing.jpg"><img src="assets/screens/private-browsing.jpg" width="1280" height="720" loading="lazy" alt="mkTV private browsing screen"></a><p>Private browsing</p></li>
+      <li><a href="assets/screens/menu.jpg"><img src="assets/screens/menu.jpg" width="1280" height="720" loading="lazy" alt="mkTV menu with Add to Favourites, Private browsing, Navigation, Desktop site, Phone remote and Settings"></a><p>Menu</p></li>
+    </ul>
     <p class="credits">Example content: Wikipedia (CC BY-SA), Merriam-Webster, and "Big Buck Bunny" © Blender Foundation (CC BY 3.0). Site names and logos belong to their owners; mkTV is not affiliated with them.</p>
   </div>
 </section>
 
-<section id="features">
+<section id="install" aria-labelledby="install-title">
   <div class="wrap">
-    <h2>An Android TV browser that is actually easy to use</h2>
-    <p class="sub">Websites are made for mice and touchscreens. mkTV makes them work from the sofa with nothing but your TV remote.</p>
-    <div class="grid">
-      <div class="card"><div class="ic">🛡️</div><h3>Built-in ad blocker</h3><p>Over 77,000 ad and tracker domains blocked, pop-ups and click-traps removed, tracking parameters stripped from links.</p></div>
-      <div class="card"><div class="ic">🎯</div><h3>Remote-friendly jump navigation</h3><p>Arrow keys jump straight to the next button, link or video. Hold ▲ or ▼ to reach a site's top or bottom bar. Prefer a mouse pointer? Switch any time.</p></div>
-      <div class="card"><div class="ic">▶️</div><h3>Full-screen watch mode</h3><p>When a video plays, a simple dock appears: play, seek, next, and true full screen. Streams can also open in a built-in native player.</p></div>
-      <div class="card"><div class="ic">📺</div><h3>YouTube in TV mode</h3><p>YouTube opens in its TV layout, so the remote feels natural. Sound turns on by itself, and video ads are skipped where possible.</p></div>
-      <div class="card"><div class="ic">🕶️</div><h3>Private browsing</h3><p>A separate private profile with nothing saved. History, cookies and cache are wiped when you leave it.</p></div>
-      <div class="card"><div class="ic">⭐</div><h3>A home screen of tiles</h3><p>Popular sites, your favourites and recent pages as big, easy tiles. The top bar hides itself so pages get the full screen.</p></div>
-    </div>
+    <h2 id="install-title">Install in 3 steps</h2>
+    <p class="sub">No account and no Play Store needed.</p>
+    <ol class="steps">
+      <li><h3>Download the APK</h3><p><a href="https://github.com/MKTVHub/mkTV/releases/latest/download/mkTV.apk">mkTV.apk</a>, the latest version.</p></li>
+      <li><h3>Send it to your TV</h3><p>Use Downloader or Send Files to TV, or <a href="https://github.com/MKTVHub/mkTV#install-from-a-computer-over-wi-fi">install from a computer over Wi-Fi</a>.</p></li>
+      <li><h3>Open mkTV</h3><p>It appears in your TV's apps row.</p></li>
+    </ol>
   </div>
 </section>
 
-<section id="remote">
-  <div class="wrap remote">
-    <div>
-      <h2>Use your phone as a TV remote and keyboard</h2>
-      <p class="sub">Typing with a D-pad is painful. With mkTV you scan a code and type on your phone instead. No app to install.</p>
-      <ol class="steps">
-        <li><b>Open ⋮ → Phone remote on the TV</b>A QR code appears.</li>
-        <li><b>Scan it with your phone's camera</b>Your phone needs to be on the same Wi-Fi as the TV.</li>
-        <li><b>Control everything</b>D-pad, OK, Back, play/pause and seek, type into search boxes, or send a website to the TV.</li>
-      </ol>
-    </div>
-    <div class="phone-shot"><img src="assets/screens/phone-remote-page.jpg" width="390" height="844" loading="lazy" alt="mkTV phone remote in a phone browser: D-pad, OK, Back, Home, Menu, media keys, type on TV and open a website"></div>
-  </div>
-</section>
-
-<section id="every-tv">
-  <div class="wrap">
-    <h2>Making every TV smart: Android TV today, LG and Samsung next</h2>
-    <p class="sub">MKTVHub's goal is bigger than one platform. mkTV keeps its core ideas (blocking rules, page scripts, the phone-remote protocol) separate from Android so they can be ported. Developers are welcome to help.</p>
-    <div class="tvs">
-      <span class="tv">Android TV <em class="now">available</em></span>
-      <span class="tv">Google TV <em class="now">available</em></span>
-      <span class="tv">Fire TV <em class="next">untested</em></span>
-      <span class="tv">LG webOS <em class="next">help wanted</em></span>
-      <span class="tv">Samsung Tizen <em class="next">help wanted</em></span>
-      <span class="tv">Other TVs <em class="next">ideas welcome</em></span>
-    </div>
-  </div>
-</section>
-
-<section id="faq">
-  <div class="wrap">
-    <h2>Frequently asked questions</h2>
-    <p class="sub">Common questions about browsing the web on a TV with mkTV.</p>
-    <details><summary>What is the best way to browse the web on Android TV?</summary><p>Use a browser designed for the remote. mkTV lets the arrow keys jump between buttons, links and videos, so you never have to steer a slow mouse pointer, and you can type with your phone instead of the on-screen keyboard.</p></details>
-    <details><summary>Does mkTV block ads?</summary><p>Yes. mkTV blocks requests to more than 77,000 known ad and tracker domains, removes pop-ups and click-trap overlays, and strips tracking parameters from links. On YouTube it removes ad slots from the page data and skips video ads where it can, but no ad blocker catches every ad.</p></details>
-    <details><summary>Can I use my phone as a remote and keyboard for my TV browser?</summary><p>Yes. In mkTV open the menu and choose Phone remote, then scan the QR code with your phone. Your phone browser becomes a D-pad, media remote and keyboard. Both devices must be on the same Wi-Fi and no app install is needed.</p></details>
+<section id="faq" aria-labelledby="faq-title">
+  <div class="wrap"><div class="faq">
+    <h2 id="faq-title">Questions</h2>
+    <p class="sub">Help with setup and the phone remote.</p>
+    <details><summary>What is the best way to browse the web on Android TV?</summary><p>Use a browser designed for the remote. In mkTV the arrow keys jump between links, buttons and videos, so there is no slow mouse pointer, and you can type on your phone instead of the on-screen keyboard.</p></details>
+    <details><summary>Does mkTV block ads?</summary><p>Yes. mkTV blocks more than 77,000 known ad and tracker domains, removes pop-ups and click-trap overlays, and strips tracking codes from links. On YouTube it removes ad slots and skips video ads where it can, but no ad blocker catches every ad.</p></details>
+    <details><summary>Can I use my phone as a remote and keyboard for my TV browser?</summary><p>Yes. Open the ⋮ menu in mkTV, choose Phone remote and scan the QR code. Your phone's browser becomes a D-pad, media remote and keyboard. No app install is needed; both devices must be on the same Wi-Fi.</p></details>
     <details><summary>Is mkTV free?</summary><p>Yes. mkTV is free and open source under the Apache 2.0 license, with no accounts, no analytics and no ads of its own.</p></details>
     <details><summary>Does mkTV work on Fire TV, LG or Samsung TVs?</summary><p>mkTV runs on Android TV and Google TV. Fire TV runs Android and may work by sideloading, but it is untested. LG webOS and Samsung Tizen ports are planned and open to contributors.</p></details>
-    <details><summary>The phone remote says "This site can't be reached". What do I do?</summary><p>Make sure the phone is on the exact same Wi-Fi as the TV (its IP should start like the TV's, for example 192.168.0.), turn off mobile data and any VPN or ad-blocker on the phone, and scan the QR code that is on the TV now, because the code changes each time mkTV restarts. Some routers block Wi-Fi devices from seeing each other (client isolation, common on guest networks).</p></details>
-    <details><summary>Does mkTV work with a VPN on the TV?</summary><p>Yes. Most VPNs, such as NordVPN, Proton and Surfshark, keep your home network outside the tunnel, so the phone remote keeps working. If mkTV shows a VPN warning on the Phone remote screen, turn on Allow LAN or local network access in the VPN app, or exclude mkTV with split tunneling.</p></details>
+    <details><summary>The phone remote says "This site can't be reached". What do I do?</summary><p>Put the phone on the same Wi-Fi as the TV, turn off mobile data and any VPN or ad blocker on the phone, and scan the QR code that is on the TV now, because it changes each time mkTV restarts. Some routers, often on guest networks, stop Wi-Fi devices from seeing each other.</p></details>
+    <details><summary>Chrome switches the phone remote link to https. What do I do?</summary><p>Tap Continue to site, or turn off Always use secure connections in Chrome's settings. mkTV refuses https on purpose, so the browser falls back to http.</p></details>
+    <details><summary>Does mkTV work with a VPN on the TV?</summary><p>Yes. Most VPNs keep your home network outside the tunnel, so the phone remote keeps working. If the Phone remote screen shows a VPN warning, turn on Allow LAN or local network access in the VPN app, or exclude mkTV with split tunneling.</p></details>
     <details><summary>Why doesn't Share Wi-Fi show my network name?</summary><p>Android only reveals the Wi-Fi name to apps allowed to use location, and only while Location is turned on in the TV settings. You can also type the name once and mkTV remembers it.</p></details>
     <details><summary>Do Netflix, Prime Video and Disney+ work in mkTV?</summary><p>mkTV supports copy-protected video, but each service decides what a browser may play. Some limit quality or block TV browsers, so their own TV apps may work better.</p></details>
-    <details><summary>How do I install mkTV on my TV?</summary><p>Download mkTV.apk from the MKTVHub GitHub Releases page and install it with adb or a sideloading app such as Downloader or Send Files to TV. You can also build it from source with Gradle. mkTV needs Android 7.0 or newer.</p></details>
-  </div>
-</section>
-
-<section id="start">
-  <div class="wrap">
-    <h2>Install mkTV on your Android TV</h2>
-    <p class="sub">Free download. No account, no Play Store needed.</p>
-    <ol class="steps">
-      <li><b>Download the APK</b><a href="https://github.com/MKTVHub/mkTV/releases/latest/download/mkTV.apk">mkTV.apk</a> (latest version, 4.7 MB, Android 7.0+). All versions are on the <a href="https://github.com/MKTVHub/mkTV/releases">Releases page</a>.</li>
-      <li><b>Get it onto the TV</b>Use a sideloading app such as Downloader or Send Files to TV, or from a computer: <code>adb install mkTV.apk</code></li>
-      <li><b>Open mkTV</b>It appears in your TV's app row. Press ⋮ → Phone remote to pair your phone.</li>
-    </ol>
-    <p class="sub" style="margin-top:28px">Or build it yourself (JDK 17, Android SDK 35):</p>
-<pre>git clone https://github.com/MKTVHub/mkTV.git && cd mkTV
-./gradlew assembleDebug
-adb connect &lt;tv-ip&gt;:5555
-adb install -r app/build/outputs/apk/debug/app-debug.apk</pre>
-    <div class="starcta">
-      <p><b>Enjoying mkTV?</b> It's free, with no ads and no tracking. A GitHub star helps other TV owners find it.</p>
-      <a class="btn solid" href="https://github.com/MKTVHub/mkTV">★ Star mkTV<span class="stars" hidden></span></a>
-    </div>
-    <p class="sub" style="margin-top:24px">Want to contribute? Start with <a href="https://github.com/MKTVHub/mkTV/blob/main/AGENTS.md">AGENTS.md</a>, <a href="https://github.com/MKTVHub/mkTV/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> and the <a href="https://github.com/MKTVHub/mkTV/blob/main/docs/ROADMAP.md">roadmap</a>.</p>
-  </div>
+    <details><summary>How do I install mkTV on my TV?</summary><p>Download mkTV.apk from the MKTVHub GitHub Releases page and install it with a sideloading app such as Downloader or Send Files to TV, or from a computer with adb over Wi-Fi. mkTV needs Android 7.0 or newer.</p></details>
+  </div></div>
 </section>
 </main>
 
 <footer>
   <div class="wrap">
     <span>© 2026 MKTVHub</span>
-    <a href="https://github.com/MKTVHub/mkTV/blob/main/LICENSE">Apache-2.0</a>
-    <a href="https://github.com/MKTVHub/mkTV/blob/main/docs/PRIVACY.md">Privacy</a>
-    <span>mkTV is not affiliated with Google, YouTube or any TV maker.</span>
+    <ul>
+      <li><a href="https://github.com/MKTVHub/mkTV">GitHub</a></li>
+      <li><a href="https://github.com/MKTVHub/mkTV/blob/main/CONTRIBUTING.md">Contribute</a></li>
+      <li><a href="https://github.com/MKTVHub/mkTV/blob/main/LICENSE">Apache-2.0</a></li>
+      <li><a href="https://github.com/MKTVHub/mkTV/blob/main/docs/PRIVACY.md">Privacy</a></li>
+    </ul>
+    <small>mkTV is not affiliated with Google, YouTube or any TV maker.</small>
   </div>
 </footer>
 
@@ -367,6 +350,8 @@ fetch("https://api.github.com/repos/MKTVHub/mkTV").then(r => r.ok ? r.json() : n
   if (!d || !d.stargazers_count) return;
   document.querySelectorAll(".stars").forEach(e => { e.textContent = d.stargazers_count.toLocaleString(); e.hidden = false; });
 }).catch(() => {});
+// no autoplay for people who asked for less motion
+if (matchMedia("(prefers-reduced-motion: reduce)").matches) document.querySelectorAll("video[autoplay]").forEach(v => { v.removeAttribute("autoplay"); v.pause(); });
 </script>
 </body>
 </html>
