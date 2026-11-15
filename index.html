@@ -51,7 +51,7 @@
       "isAccessibleForFree": true,
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
       "image": "https://mktvhub.github.io/assets/og.png",
-      "screenshot": ["https://mktvhub.github.io/assets/screens/home.jpg", "https://mktvhub.github.io/assets/screens/jump-navigation.jpg", "https://mktvhub.github.io/assets/screens/tabs.jpg", "https://mktvhub.github.io/assets/screens/watch-mode.jpg", "https://mktvhub.github.io/assets/screens/ad-blocker.jpg", "https://mktvhub.github.io/assets/screens/downloads.jpg", "https://mktvhub.github.io/assets/screens/phone-remote-qr.jpg", "https://mktvhub.github.io/assets/screens/settings.jpg", "https://mktvhub.github.io/assets/screens/zoom.jpg"],
+      "screenshot": ["https://mktvhub.github.io/assets/screens/home.jpg", "https://mktvhub.github.io/assets/screens/jump-navigation.jpg", "https://mktvhub.github.io/assets/screens/tabs.jpg", "https://mktvhub.github.io/assets/screens/watch-mode.jpg", "https://mktvhub.github.io/assets/screens/ad-blocker.jpg", "https://mktvhub.github.io/assets/screens/downloads.jpg", "https://mktvhub.github.io/assets/screens/phone-remote-qr.jpg", "https://mktvhub.github.io/assets/screens/settings.jpg", "https://mktvhub.github.io/assets/screens/zoom.jpg", "https://mktvhub.github.io/assets/screens/phone-remote-page.jpg", "https://mktvhub.github.io/assets/screens/private-browsing.jpg", "https://mktvhub.github.io/assets/screens/menu.jpg"],
       "publisher": { "@id": "https://mktvhub.github.io/#org" }
     },
     {
@@ -167,6 +167,8 @@
   .gallery li { flex:0 0 86%; scroll-snap-align:start; }
   .gallery a { display:block; border-radius:12px; overflow:hidden; border:1px solid var(--line); background:#000; }
   .gallery p { margin:10px 0 0; font-size:15px; font-weight:600; }
+  .gallery a.portrait { aspect-ratio:16/9; position:relative; background:#15121d; }
+  .gallery a.portrait img { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
   .credits { color:#8f88a3; font-size:13px; margin:var(--s3) 0 0; }
 
   .steps { counter-reset:s; list-style:none; margin:0; padding:0; display:grid; gap:var(--s2); }
@@ -301,7 +303,10 @@
       <li><a href="assets/screens/ad-blocker.jpg"><img src="assets/screens/ad-blocker.jpg" width="1280" height="720" loading="lazy" alt="mkTV ad blocker panel showing ads and trackers blocked on a website"></a><p>Ad blocker</p></li>
       <li><a href="assets/screens/downloads.jpg"><img src="assets/screens/downloads.jpg" width="1280" height="720" loading="lazy" alt="mkTV Downloads list with a downloaded PDF and Remove and Delete buttons"></a><p>Downloads</p></li>
       <li><a href="assets/screens/phone-remote-qr.jpg"><img src="assets/screens/phone-remote-qr.jpg" width="1280" height="720" loading="lazy" alt="mkTV Phone remote panel with a QR code carrying the mkTV logo, Connect and Devices tabs, and a New code button"></a><p>Phone remote</p></li>
+      <li><a class="portrait" href="assets/screens/phone-remote-page.jpg"><img src="assets/screens/phone-remote-page.jpg" width="390" height="844" loading="lazy" alt="The mkTV phone remote page in a phone browser: D-pad with OK, Back, Home and Menu, media and volume keys, Type on TV and Search fields"></a><p>Your phone as the remote</p></li>
       <li><a href="assets/screens/settings.jpg"><img src="assets/screens/settings.jpg" width="1280" height="720" loading="lazy" alt="mkTV Settings with a sidebar of sections and the Protection section open"></a><p>Settings</p></li>
+      <li><a href="assets/screens/private-browsing.jpg"><img src="assets/screens/private-browsing.jpg" width="1280" height="720" loading="lazy" alt="mkTV private browsing home screen in purple, explaining that nothing from the session is kept"></a><p>Private browsing</p></li>
+      <li><a href="assets/screens/menu.jpg"><img src="assets/screens/menu.jpg" width="1280" height="720" loading="lazy" alt="mkTV menu over a web page: Tabs, Add to Favourites, Private browsing, Navigation, Zoom, Desktop site, History, Downloads and Phone remote"></a><p>Menu</p></li>
       <li><a href="assets/screens/zoom.jpg"><img src="assets/screens/zoom.jpg" width="1280" height="720" loading="lazy" alt="mkTV Zoom panel set to 110 percent, remembered for en.wikipedia.org"></a><p>Zoom</p></li>
     </ul>
     <p class="credits">Example content: Wikipedia (CC BY-SA), Merriam-Webster, and "Big Buck Bunny" © Blender Foundation (CC BY 3.0). Site names and logos belong to their owners; mkTV is not affiliated with them.</p>
