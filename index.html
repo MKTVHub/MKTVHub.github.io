@@ -55,6 +55,16 @@
       "publisher": { "@id": "https://mktvhub.github.io/#org" }
     },
     {
+      "@type": "VideoObject",
+      "name": "mkTV in 30 seconds",
+      "description": "mkTV, the web browser made for your TV remote: jump navigation, ad blocking, watch mode, phone remote and private browsing on a real Google TV.",
+      "thumbnailUrl": "https://mktvhub.github.io/assets/mktv-promo-poster.jpg",
+      "contentUrl": "https://mktvhub.github.io/assets/mktv-promo.mp4",
+      "uploadDate": "2026-11-15",
+      "duration": "PT31S",
+      "publisher": { "@id": "https://mktvhub.github.io/#org" }
+    },
+    {
       "@type": "FAQPage",
       "mainEntity": [
         { "@type": "Question", "name": "What is the best way to browse the web on Android TV?",
@@ -141,6 +151,9 @@
   summary::after { content:"+"; float:right; color:var(--muted); font-weight:400; }
   details[open] summary::after { content:"−"; }
   details p { color:var(--muted); margin:10px 0 0; }
+  .film { margin-top:-70px; position:relative; z-index:2; padding:0 0 30px; }
+  .film video { display:block; width:100%; height:auto; border-radius:20px; border:1px solid var(--line); box-shadow:0 30px 70px #0009; background:#000; }
+  .film p { color:var(--muted); font-size:14px; margin-top:12px; text-align:center; }
   .shots { display:grid; grid-template-columns:repeat(2,1fr); gap:22px; }
   .shot { margin:0; }
   .shot a { display:block; border-radius:16px; overflow:hidden; border:1px solid var(--line); box-shadow:0 18px 40px #0006; background:#000; transition:transform .2s; }
@@ -197,6 +210,13 @@
     <img class="mark" src="assets/mark.png" alt="mkTV logo: white play button with mk inside" width="340" height="340">
   </div>
 </header>
+
+<section class="film" aria-label="mkTV in 30 seconds">
+  <div class="wrap">
+    <video src="assets/mktv-promo.mp4" poster="assets/mktv-promo-poster.jpg" width="1280" height="720" autoplay muted loop playsinline preload="metadata" controls aria-label="mkTV promo video: jump navigation, ad blocking, watch mode, phone remote and private browsing on a TV"></video>
+    <p>mkTV in 30 seconds, on a real Google TV.</p>
+  </div>
+</section>
 
 <section id="screenshots">
   <div class="wrap">
