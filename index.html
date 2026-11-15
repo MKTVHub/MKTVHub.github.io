@@ -146,6 +146,13 @@
   .ctas { display:flex; flex-wrap:wrap; gap:12px; }
   .meta { margin:var(--s2) 0 0; font-size:14px; color:var(--muted); }
   .tv { border-radius:16px; overflow:hidden; border:1px solid #ffffff1f; box-shadow:0 30px 80px #0009, 0 0 0 6px #ffffff08; background:#000; }
+  .show .tv { display:grid; aspect-ratio:16/9; }
+  .show .tv img { grid-area:1/1; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.02); transition:opacity .7s, transform 5s linear; }
+  .show .tv img.on { opacity:1; transform:scale(1); }
+  .dots { display:flex; flex-wrap:wrap; justify-content:center; gap:6px; margin-top:var(--s2); }
+  .dots button { min-height:32px; padding:0 12px; border-radius:999px; border:1px solid #ffffff1f; background:#ffffff08; color:var(--muted); font:600 13px/1 inherit; font-family:inherit; cursor:pointer; }
+  .dots button:hover { color:var(--text); background:#ffffff12; }
+  .dots button[aria-current] { color:#fff; border-color:transparent; background:var(--btn); }
 
   /* sections */
   section { padding:48px 0; }
@@ -258,7 +265,28 @@
       </div>
       <p class="meta">Version 1.2.0 · 5 MB · Android 7.0+</p>
     </div>
-    <div class="tv"><img src="assets/screens/home.jpg" width="1280" height="720" fetchpriority="high" alt="mkTV home screen on a Google TV: the mkTV logo, Phone remote, History and Private browsing buttons, and Popular tiles for YouTube, Netflix, Prime Video, Disney+, Spotify, YouTube Music, Twitch and TikTok"></div>
+    <div class="show" aria-roledescription="carousel" aria-label="mkTV screens">
+      <div class="tv">
+        <img src="assets/screens/home.jpg" width="1280" height="720" fetchpriority="high" alt="mkTV home screen on a Google TV: the mkTV logo, Phone remote, History and Private browsing buttons, and Popular tiles for YouTube, Netflix, Prime Video, Disney+, Spotify, YouTube Music, Twitch and TikTok" class=on>
+        <img src="assets/screens/jump-navigation.jpg" width="1280" height="720" loading="lazy" alt="mkTV jump navigation highlighting a link on a Wikipedia article">
+        <img src="assets/screens/watch-mode.jpg" width="1280" height="720" loading="lazy" alt="mkTV watch mode dock over a playing video">
+        <img src="assets/screens/ad-blocker.jpg" width="1280" height="720" loading="lazy" alt="mkTV ad blocker panel showing ads and trackers blocked on a website">
+        <img src="assets/screens/phone-remote-qr.jpg" width="1280" height="720" loading="lazy" alt="mkTV Phone remote panel with a QR code to scan with your phone">
+        <img src="assets/screens/tabs.jpg" width="1280" height="720" loading="lazy" alt="mkTV tab switcher open over a Wikipedia page">
+        <img src="assets/screens/private-browsing.jpg" width="1280" height="720" loading="lazy" alt="mkTV private browsing home screen in purple">
+        <img src="assets/screens/settings.jpg" width="1280" height="720" loading="lazy" alt="mkTV Settings with a sidebar of sections and the Protection section open">
+      </div>
+      <div class="dots">
+        <button type="button" aria-current=true>Home</button>
+        <button type="button">Jump navigation</button>
+        <button type="button">Watch mode</button>
+        <button type="button">Ad blocker</button>
+        <button type="button">Phone remote</button>
+        <button type="button">Tabs</button>
+        <button type="button">Private browsing</button>
+        <button type="button">Settings</button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -367,6 +395,27 @@ fetch("https://api.github.com/repos/MKTVHub/mkTV").then(r => r.ok ? r.json() : n
   if (!d || !d.stargazers_count) return;
   document.querySelectorAll(".stars").forEach(e => { e.textContent = d.stargazers_count.toLocaleString(); e.hidden = false; });
 }).catch(() => {});
+// hero screens: auto-advance every 4 s; pauses on hover/focus, off for reduced motion
+(() => {
+  const show = document.querySelector(".show"); if (!show) return;
+  const imgs = show.querySelectorAll(".tv img"), dots = show.querySelectorAll(".dots button");
+  let i = 0, timer = 0, paused = false;
+  const go = n => {
+    imgs[i].classList.remove("on"); dots[i].removeAttribute("aria-current");
+    i = (n + imgs.length) % imgs.length;
+    imgs[i].classList.add("on"); dots[i].setAttribute("aria-current", "true");
+    imgs[(i + 1) % imgs.length].loading = "eager"; // preload the next one
+  };
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const start = () => { clearInterval(timer); if (!still) timer = setInterval(() => { if (!paused && !document.hidden) go(i + 1); }, 4000); };
+  dots.forEach((d, n) => d.addEventListener("click", () => { go(n); start(); }));
+  show.addEventListener("mouseenter", () => paused = true);
+  show.addEventListener("mouseleave", () => paused = false);
+  show.addEventListener("focusin", () => paused = true);
+  show.addEventListener("focusout", () => paused = false);
+  imgs[1].loading = "eager";
+  start();
+})();
 // no autoplay for people who asked for less motion
 if (matchMedia("(prefers-reduced-motion: reduce)").matches) document.querySelectorAll("video[autoplay]").forEach(v => { v.removeAttribute("autoplay"); v.pause(); });
 </script>
