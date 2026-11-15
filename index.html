@@ -117,6 +117,9 @@
   .btn.solid { background:#fff; color:#2a1440; }
   .btn.ghost { background:#ffffff22; color:#fff; border:1px solid #ffffff55; }
   .btn:hover { transform:translateY(-1px); }
+  .stars { background:#2a144018; border-radius:8px; padding:2px 8px; font-size:14px; }
+  .starcta { margin-top:34px; padding:22px 26px; border-radius:18px; background:linear-gradient(135deg,#7c3aed22,#db277722,#f9731622); border:1px solid #ffffff22; display:flex; gap:18px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+  .starcta p { margin:0; font-size:17px; }
 
   section { padding:70px 0; }
   h2 { font-size:34px; margin:0 0 10px; letter-spacing:-.01em; }
@@ -203,7 +206,7 @@
       <h1>mkTV: the web browser made for your TV remote</h1>
       <p class="lead">A free, open-source browser for Android TV and Google TV. It blocks ads, lets you reach any button on any website with the D-pad, plays videos full screen, and turns your phone into a remote and keyboard.</p>
       <div class="btns">
-        <a class="btn solid" href="https://github.com/MKTVHub/mkTV">View on GitHub</a>
+        <a class="btn solid" href="https://github.com/MKTVHub/mkTV">★ Star on GitHub<span class="stars" hidden></span></a>
         <a class="btn ghost" href="https://github.com/MKTVHub/mkTV/releases/latest/download/mkTV.apk">⬇ Download APK</a>
       </div>
     </div>
@@ -328,6 +331,10 @@
 ./gradlew assembleDebug
 adb connect &lt;tv-ip&gt;:5555
 adb install -r app/build/outputs/apk/debug/app-debug.apk</pre>
+    <div class="starcta">
+      <p><b>Enjoying mkTV?</b> It's free, with no ads and no tracking. A GitHub star helps other TV owners find it.</p>
+      <a class="btn solid" href="https://github.com/MKTVHub/mkTV">★ Star mkTV<span class="stars" hidden></span></a>
+    </div>
     <p class="sub" style="margin-top:24px">Want to contribute? Start with <a href="https://github.com/MKTVHub/mkTV/blob/main/AGENTS.md">AGENTS.md</a>, <a href="https://github.com/MKTVHub/mkTV/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> and the <a href="https://github.com/MKTVHub/mkTV/blob/main/docs/ROADMAP.md">roadmap</a>.</p>
   </div>
 </section>
@@ -342,5 +349,12 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk</pre>
   </div>
 </footer>
 
+<script>
+// live star count; the buttons work fine without it (offline, rate-limited)
+fetch("https://api.github.com/repos/MKTVHub/mkTV").then(r => r.ok ? r.json() : null).then(d => {
+  if (!d || !d.stargazers_count) return;
+  document.querySelectorAll(".stars").forEach(e => { e.textContent = d.stargazers_count.toLocaleString(); e.hidden = false; });
+}).catch(() => {});
+</script>
 </body>
 </html>
